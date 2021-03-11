@@ -4,14 +4,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-    open-in-view: false
   datasource:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/training
     username: training
     password: 1234
     driverClassName: org.postgresql.Driver
-
 
 com:
   guillermoblasco:

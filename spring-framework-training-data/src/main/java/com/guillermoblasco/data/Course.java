@@ -1,8 +1,10 @@
 package com.guillermoblasco.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -10,6 +12,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "course")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Course {
 
     @Id
@@ -20,6 +23,7 @@ public class Course {
     private UUID id;
 
     @Column(name = "name", nullable = false)
+    @Validated
     private String name;
 
     @ManyToOne

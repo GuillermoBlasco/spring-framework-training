@@ -1,5 +1,6 @@
 package com.guillermoblasco.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "course_type")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class CourseType {
 
     @Id
