@@ -2,7 +2,8 @@ package com.guillermoblasco.web;
 
 import com.guillermoblasco.data.Course;
 import com.guillermoblasco.data.CourseRepository;
-import com.guillermoblasco.service.config.Log;
+import com.guillermoblasco.data.CourseType;
+import com.guillermoblasco.data.CourseTypeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,32 +12,31 @@ import javax.transaction.Transactional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/courseType")
 @RequiredArgsConstructor
-public class CrudCourseController {
+public class CrudCourseTypeController {
 
 
-    private final CourseRepository courseRepository;
+    private final CourseTypeRepository repository;
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     @Transactional
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Course udpdate(@PathVariable("id") Course course, @RequestBody Course inputCourse) {
+    public CourseType udpdate(@PathVariable("id") CourseType course, @RequestBody CourseType inputCourse) {
         course.setName(inputCourse.getName());
-        courseRepository.save(course);
+        repository.save(course);
         return course;
     }
 
     @GetMapping(path = "/{id}")
-    @Log
-    public Course get(@PathVariable("id") UUID id) {
-        Course one = courseRepository.getOne(id);
+    public CourseType get(@PathVariable("id") UUID id) {
+        CourseType one = repository.getOne(id);
         return one;
     }
 
     @PostMapping(path = "")
-    public Course create(@RequestBody Course course) {
-        return courseRepository.save(course);
+    public CourseType create(@RequestBody CourseType course) {
+        return repository.save(course);
     }
 
 

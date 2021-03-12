@@ -23,7 +23,6 @@ public class Course {
     private UUID id;
 
     @Column(name = "name", nullable = false)
-    @Validated
     private String name;
 
     @ManyToOne

@@ -1,5 +1,7 @@
 package com.guillermoblasco.service;
 
+import com.guillermoblasco.service.config.Log;
+import com.guillermoblasco.service.config.LoggerAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -21,6 +23,7 @@ public class RandomizeService {
         this.properties = properties;
     }
 
+    @Log
     public List<String> randomize(List<String> terms, Long seed) {
         if (seed == null) {
             seed = properties.getDefaultSeed();
